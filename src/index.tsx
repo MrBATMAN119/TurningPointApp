@@ -417,99 +417,117 @@ app.post('/api/chat', async (c) => {
 // Main homepage
 app.get('/', (c) => {
   return c.render(
-    <div className="min-h-screen bg-gradient-to-b from-blue-900 to-blue-700">
+    <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white">
       {/* Header */}
-      <header className="bg-white shadow-lg">
+      <header className="church-header shadow-xl">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-6">
             <div className="flex items-center">
-              <h1 className="text-3xl font-bold text-gray-900">
+              <h1 className="text-4xl md:text-5xl font-bold text-white gold-shimmer">
                 🏛️ Turning Point Church
               </h1>
-              <span className="ml-4 text-lg text-gray-600">Scottsburg, Indiana</span>
+              <span className="ml-6 text-xl text-yellow-300 font-semibold">Scottsburg, Indiana</span>
             </div>
             <nav className="hidden md:flex space-x-8">
-              <a href="#sermons" className="text-gray-600 hover:text-blue-600 font-medium">Sermons</a>
-              <a href="#events" className="text-gray-600 hover:text-blue-600 font-medium">Events</a>
-              <a href="#donate" className="text-gray-600 hover:text-blue-600 font-medium">Give</a>
-              <a href="#prayer" className="text-gray-600 hover:text-blue-600 font-medium">Prayer</a>
-              <a href="#chat" className="text-gray-600 hover:text-blue-600 font-medium">Ask Questions</a>
+              <a href="#sermons" className="nav-link text-xl">Sermons</a>
+              <a href="#events" className="nav-link text-xl">Events</a>
+              <a href="#donate" className="nav-link text-xl">Give</a>
+              <a href="#prayer" className="nav-link text-xl">Prayer</a>
+              <a href="#chat" className="nav-link text-xl">Ask Questions</a>
             </nav>
           </div>
         </div>
       </header>
 
       {/* Hero Section */}
-      <section className="py-20 text-white text-center">
-        <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-5xl font-bold mb-6">
+      <section className="hero-gradient py-24 text-white text-center relative overflow-hidden">
+        <div className="absolute inset-0 bg-black bg-opacity-20"></div>
+        <div className="relative max-w-6xl mx-auto px-4">
+          <h2 className="text-6xl md:text-7xl font-bold mb-8 text-shadow-lg">
             Welcome to The Way Fellowship
           </h2>
-          <p className="text-xl mb-8">
-            Torah Observant Followers of the Messiah • Biblical Feast Days • Hebrew Roots Teaching
+          <p className="text-2xl md:text-3xl mb-8 font-semibold text-yellow-200">
+            Torah Observant Followers of the Messiah
           </p>
-          <p className="text-lg mb-8">
+          <p className="text-xl md:text-2xl mb-6 text-yellow-100">
+            Biblical Feast Days • Hebrew Roots Teaching • Clean Living
+          </p>
+          <p className="text-lg md:text-xl mb-10 text-blue-100">
             Led by MrBATMAN (Jim Barber) - Encouraging biblical living and street evangelism in Scottsburg, IN
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="bg-yellow-500 hover:bg-yellow-600 text-blue-900 font-bold py-3 px-8 rounded-lg transition duration-300">
-              Watch Latest Sermon
+          <div className="flex flex-col sm:flex-row gap-6 justify-center">
+            <button className="btn-gold text-xl py-4 px-10">
+              📺 Watch Latest Sermon
             </button>
-            <button className="bg-transparent border-2 border-white hover:bg-white hover:text-blue-900 text-white font-bold py-3 px-8 rounded-lg transition duration-300">
-              Upcoming Events
+            <button className="btn-secondary text-xl py-4 px-10">
+              📅 Upcoming Events
             </button>
           </div>
         </div>
+        {/* Decorative elements */}
+        <div className="absolute top-10 left-10 text-6xl opacity-20">✡️</div>
+        <div className="absolute bottom-10 right-10 text-6xl opacity-20">🕊️</div>
       </section>
 
       {/* Featured Content */}
-      <section className="py-16 bg-white">
+      <section className="py-20 bg-gradient-to-b from-blue-50 to-white">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="grid md:grid-cols-3 gap-8">
+          <h2 className="text-4xl md:text-5xl font-bold text-center mb-16" style={{color: 'var(--royal-blue-primary)'}}>
+            🌟 Welcome to Our Fellowship
+          </h2>
+          <div className="grid md:grid-cols-3 gap-10">
             {/* Recent Sermons */}
-            <div className="bg-gray-50 p-6 rounded-lg">
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">📺 Recent Sermons</h3>
+            <div className="church-card">
+              <h3 className="text-3xl font-bold mb-6" style={{color: 'var(--royal-blue-primary)'}}>
+                📺 Recent Sermons
+              </h3>
               <div id="recent-sermons" className="space-y-4">
-                <div className="border-l-4 border-blue-500 pl-4">
-                  <h4 className="font-semibold">Walking in Torah Truth</h4>
-                  <p className="text-gray-600 text-sm">Understanding biblical commandments in daily life</p>
-                  <span className="text-xs text-blue-600">Psalm 119:105</span>
+                <div className="sermon-card">
+                  <h4 className="font-bold text-xl mb-2">Walking in Torah Truth</h4>
+                  <p className="text-lg mb-2">Understanding biblical commandments in daily life</p>
+                  <span className="scripture-reference text-base font-semibold">Psalm 119:105</span>
                 </div>
               </div>
-              <button className="mt-4 text-blue-600 hover:text-blue-800 font-semibold">
+              <button className="mt-6 btn-primary text-lg">
                 View All Sermons →
               </button>
             </div>
 
             {/* Upcoming Events */}
-            <div className="bg-gray-50 p-6 rounded-lg">
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">📅 Upcoming Events</h3>
+            <div className="church-card">
+              <h3 className="text-3xl font-bold mb-6" style={{color: 'var(--church-gold-dark)'}}>
+                📅 Upcoming Events
+              </h3>
               <div id="upcoming-events" className="space-y-4">
-                <div className="border-l-4 border-green-500 pl-4">
-                  <h4 className="font-semibold">Sabbath Service</h4>
-                  <p className="text-gray-600 text-sm">Weekly Torah study and fellowship</p>
-                  <span className="text-xs text-green-600">This Saturday 10:00 AM</span>
+                <div className="event-card">
+                  <h4 className="font-bold text-xl mb-2">Sabbath Service</h4>
+                  <p className="text-lg mb-2">Weekly Torah study and fellowship</p>
+                  <span className="text-base font-semibold" style={{color: 'var(--church-gold-dark)'}}>
+                    This Saturday 10:00 AM
+                  </span>
                 </div>
               </div>
-              <button className="mt-4 text-green-600 hover:text-green-800 font-semibold">
+              <button className="mt-6 btn-gold text-lg">
                 View All Events →
               </button>
             </div>
 
             {/* Quick Actions */}
-            <div className="bg-gray-50 p-6 rounded-lg">
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">🤝 Get Involved</h3>
-              <div className="space-y-3">
-                <button className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded transition duration-300">
+            <div className="church-card">
+              <h3 className="text-3xl font-bold mb-6" style={{color: 'var(--royal-blue-primary)'}}>
+                🤝 Get Involved
+              </h3>
+              <div className="space-y-4">
+                <button className="w-full btn-gold text-lg py-3">
                   💝 Give Online
                 </button>
-                <button className="w-full bg-purple-600 hover:bg-purple-700 text-white py-2 px-4 rounded transition duration-300">
+                <button className="w-full btn-primary text-lg py-3">
                   🙏 Submit Prayer Request
                 </button>
-                <button className="w-full bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded transition duration-300">
+                <button className="w-full btn-gold text-lg py-3">
                   📧 Join Newsletter
                 </button>
-                <button className="w-full bg-orange-600 hover:bg-orange-700 text-white py-2 px-4 rounded transition duration-300">
+                <button className="w-full btn-primary text-lg py-3">
                   💬 Chat with AI Assistant
                 </button>
               </div>
@@ -519,30 +537,30 @@ app.get('/', (c) => {
       </section>
 
       {/* Chat Section */}
-      <section id="chat" className="py-16 bg-gray-100">
-        <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center text-gray-900 mb-8">
+      <section id="chat" className="py-20" style={{background: 'var(--church-cream)'}}>
+        <div className="max-w-5xl mx-auto px-4">
+          <h2 className="text-4xl md:text-5xl font-bold text-center mb-6" style={{color: 'var(--royal-blue-primary)'}}>
             💬 Ask Our AI Assistant
           </h2>
-          <p className="text-center text-gray-600 mb-8">
+          <p className="text-xl md:text-2xl text-center mb-12" style={{color: 'var(--text-secondary)'}}>
             Get answers about sermons, events, biblical questions, and church activities!
           </p>
-          <div className="bg-white rounded-lg shadow-lg p-6">
-            <div id="chat-messages" className="h-64 overflow-y-auto mb-4 p-4 bg-gray-50 rounded border">
-              <div className="text-center text-gray-500">
-                👋 Hello! I'm here to help with questions about Turning Point Church, our sermons, events, and biblical topics. How can I assist you today?
+          <div className="chat-container max-w-4xl mx-auto">
+            <div id="chat-messages" className="chat-messages custom-scrollbar">
+              <div className="text-center p-6" style={{color: 'var(--royal-blue-primary)', fontSize: '1.25rem'}}>
+                👋 Shalom! I'm here to help with questions about Turning Point Church, our sermons, events, and biblical topics. How can I assist you today?
               </div>
             </div>
-            <div className="flex gap-2">
+            <div className="flex gap-4 p-6 bg-white border-t-2" style={{borderColor: 'var(--royal-blue-light)'}}>
               <input 
                 type="text" 
                 id="chat-input" 
                 placeholder="Ask about sermons, events, or biblical questions..."
-                className="flex-1 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="chat-input flex-1"
               />
               <button 
                 id="chat-send" 
-                className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg transition duration-300 font-semibold"
+                className="chat-send"
               >
                 Send
               </button>
@@ -552,18 +570,20 @@ app.get('/', (c) => {
       </section>
 
       {/* Footer */}
-      <footer className="bg-gray-900 text-white py-12">
+      <footer className="church-footer">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="grid md:grid-cols-4 gap-8">
+          <div className="grid md:grid-cols-4 gap-10">
             <div>
-              <h3 className="text-lg font-bold mb-4">Turning Point Church</h3>
-              <p className="text-gray-300 mb-2">The Way Fellowship</p>
-              <p className="text-gray-300 mb-2">Scottsburg, Indiana</p>
-              <p className="text-gray-300">Torah Observant • Hebrew Roots</p>
+              <h3 className="text-2xl font-bold mb-6">🏛️ Turning Point Church</h3>
+              <p className="text-xl mb-3">The Way Fellowship</p>
+              <p className="text-xl mb-3">Scottsburg, Indiana</p>
+              <p className="text-lg font-semibold" style={{color: 'var(--church-gold)'}}>
+                Torah Observant • Hebrew Roots
+              </p>
             </div>
             <div>
-              <h4 className="text-lg font-semibold mb-4">Services</h4>
-              <ul className="text-gray-300 space-y-2">
+              <h4 className="text-xl font-bold mb-6">⛪ Services</h4>
+              <ul className="space-y-3 text-lg">
                 <li>Sabbath Services</li>
                 <li>Torah Study Groups</li>
                 <li>Street Ministry</li>
@@ -571,24 +591,29 @@ app.get('/', (c) => {
               </ul>
             </div>
             <div>
-              <h4 className="text-lg font-semibold mb-4">Connect</h4>
-              <ul className="text-gray-300 space-y-2">
-                <li><a href="#" className="hover:text-blue-400">Contact Us</a></li>
-                <li><a href="#" className="hover:text-blue-400">Prayer Requests</a></li>
-                <li><a href="#" className="hover:text-blue-400">Newsletter</a></li>
-                <li><a href="#" className="hover:text-blue-400">Donate</a></li>
+              <h4 className="text-xl font-bold mb-6">🤝 Connect</h4>
+              <ul className="space-y-3 text-lg">
+                <li><a href="#" className="footer-link">Contact Us</a></li>
+                <li><a href="#" className="footer-link">Prayer Requests</a></li>
+                <li><a href="#" className="footer-link">Newsletter</a></li>
+                <li><a href="#" className="footer-link">Donate</a></li>
               </ul>
             </div>
             <div>
-              <h4 className="text-lg font-semibold mb-4">Pastor MrBATMAN</h4>
-              <p className="text-gray-300 text-sm">
+              <h4 className="text-xl font-bold mb-6">👨‍💼 Pastor MrBATMAN</h4>
+              <p className="text-lg leading-relaxed">
                 Jim Barber - Torah Observant teacher, street preacher, and follower of the Messiah. 
                 Encouraging biblical living and avoiding "the piggy" since his calling.
               </p>
             </div>
           </div>
-          <div className="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
-            <p>&copy; 2025 Turning Point Church, Scottsburg, Indiana. Built with faith and code! 🙏</p>
+          <div className="border-t-2 mt-12 pt-8 text-center" style={{borderColor: 'var(--church-gold)'}}>
+            <p className="text-xl" style={{color: 'var(--church-gold)'}}>
+              &copy; 2025 Turning Point Church, Scottsburg, Indiana. Built with faith and code! 🙏
+            </p>
+            <p className="text-lg mt-2 italic">
+              "Your word is a lamp to my feet and a light to my path." - Psalm 119:105
+            </p>
           </div>
         </div>
       </footer>

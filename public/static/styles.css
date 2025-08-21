@@ -1,1 +1,583 @@
-/* Turning Point Church Website - Custom Styles */\n/* Complementing TailwindCSS with church-specific styling */\n\n:root {\n  --church-blue: #1e40af;\n  --church-gold: #f59e0b;\n  --church-purple: #7c3aed;\n  --church-green: #10b981;\n  --text-primary: #1f2937;\n  --text-secondary: #6b7280;\n}\n\n/* Custom animations */\n@keyframes fadeInUp {\n  from {\n    opacity: 0;\n    transform: translateY(30px);\n  }\n  to {\n    opacity: 1;\n    transform: translateY(0);\n  }\n}\n\n@keyframes pulse {\n  0%, 100% {\n    opacity: 1;\n  }\n  50% {\n    opacity: 0.5;\n  }\n}\n\n/* Page load animation */\n.fade-in-up {\n  animation: fadeInUp 0.6s ease-out;\n}\n\n/* Hero section styling */\n.hero-gradient {\n  background: linear-gradient(135deg, #1e40af 0%, #3b82f6 50%, #60a5fa 100%);\n}\n\n/* Custom button styles */\n.btn-primary {\n  @apply bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition duration-300 transform hover:scale-105;\n}\n\n.btn-secondary {\n  @apply bg-transparent border-2 border-white hover:bg-white hover:text-blue-900 text-white font-semibold py-3 px-6 rounded-lg transition duration-300;\n}\n\n.btn-donate {\n  @apply bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-4 rounded-lg transition duration-300 transform hover:scale-105;\n}\n\n.btn-prayer {\n  @apply bg-purple-600 hover:bg-purple-700 text-white font-semibold py-2 px-4 rounded-lg transition duration-300 transform hover:scale-105;\n}\n\n/* Card styles */\n.church-card {\n  @apply bg-white rounded-lg shadow-lg p-6 transform transition duration-300 hover:scale-105 hover:shadow-xl;\n}\n\n.sermon-card {\n  @apply border-l-4 border-blue-500 pl-4 cursor-pointer hover:bg-gray-50 p-3 rounded-r transition duration-200;\n}\n\n.event-card {\n  @apply border-l-4 border-green-500 pl-4 cursor-pointer hover:bg-gray-50 p-3 rounded-r transition duration-200;\n}\n\n/* Chat styles */\n.chat-container {\n  @apply bg-white rounded-lg shadow-lg overflow-hidden;\n}\n\n.chat-messages {\n  @apply h-80 overflow-y-auto p-4 bg-gray-50 scroll-smooth;\n}\n\n.chat-message-user {\n  @apply mb-3 text-right;\n}\n\n.chat-message-bot {\n  @apply mb-3 text-left;\n}\n\n.chat-bubble-user {\n  @apply inline-block max-w-xs lg:max-w-md px-4 py-2 rounded-lg bg-blue-600 text-white ml-12;\n}\n\n.chat-bubble-bot {\n  @apply inline-block max-w-xs lg:max-w-md px-4 py-2 rounded-lg bg-gray-200 text-gray-800 mr-12;\n}\n\n.chat-input {\n  @apply flex-1 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500;\n}\n\n.chat-send {\n  @apply bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg transition duration-300 font-semibold;\n}\n\n/* Modal styles */\n.modal-overlay {\n  @apply fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50;\n}\n\n.modal-content {\n  @apply bg-white rounded-lg shadow-2xl max-w-2xl max-h-screen overflow-y-auto mx-4 w-full;\n}\n\n.modal-header {\n  @apply flex justify-between items-center p-6 border-b border-gray-200;\n}\n\n.modal-body {\n  @apply p-6;\n}\n\n/* Form styles */\n.form-input {\n  @apply w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500;\n}\n\n.form-textarea {\n  @apply w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 resize-none;\n}\n\n.form-select {\n  @apply w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500;\n}\n\n.form-checkbox {\n  @apply h-4 w-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500;\n}\n\n/* Donation form styles */\n.donation-type {\n  @apply bg-gray-100 hover:bg-gray-200 p-4 rounded-lg text-center cursor-pointer transition duration-200 border-2 border-transparent;\n}\n\n.donation-type.selected {\n  @apply ring-2 ring-blue-500 bg-blue-50 border-blue-200;\n}\n\n.amount-btn {\n  @apply bg-gray-100 hover:bg-gray-200 px-4 py-2 rounded-lg cursor-pointer transition duration-200 font-medium;\n}\n\n.amount-btn.selected {\n  @apply bg-blue-500 text-white;\n}\n\n/* Video player styles */\n.video-container {\n  @apply relative w-full h-0 pb-[56.25%]; /* 16:9 aspect ratio */\n}\n\n.video-player {\n  @apply absolute top-0 left-0 w-full h-full rounded-lg;\n}\n\n/* Typography */\n.heading-primary {\n  @apply text-4xl md:text-5xl font-bold text-gray-900 mb-6;\n}\n\n.heading-secondary {\n  @apply text-2xl md:text-3xl font-bold text-gray-900 mb-4;\n}\n\n.text-lead {\n  @apply text-lg md:text-xl text-gray-600 mb-6;\n}\n\n/* Navigation */\n.nav-link {\n  @apply text-gray-600 hover:text-blue-600 font-medium transition duration-200;\n}\n\n.nav-link.active {\n  @apply text-blue-600 border-b-2 border-blue-600;\n}\n\n/* Footer */\n.footer-link {\n  @apply text-gray-300 hover:text-blue-400 transition duration-200;\n}\n\n/* Responsive utilities */\n@media (max-width: 768px) {\n  .mobile-hidden {\n    display: none;\n  }\n  \n  .mobile-menu {\n    @apply fixed inset-0 bg-white z-40 transform transition-transform duration-300;\n  }\n  \n  .mobile-menu.closed {\n    transform: translateX(-100%);\n  }\n}\n\n/* Loading states */\n.loading {\n  @apply opacity-50 pointer-events-none;\n}\n\n.spinner {\n  @apply animate-spin rounded-full h-6 w-6 border-b-2 border-blue-600;\n}\n\n/* Toast notifications */\n.toast {\n  @apply fixed top-4 right-4 bg-white shadow-lg rounded-lg p-4 z-50 transform transition-all duration-300;\n}\n\n.toast.success {\n  @apply border-l-4 border-green-500;\n}\n\n.toast.error {\n  @apply border-l-4 border-red-500;\n}\n\n.toast.info {\n  @apply border-l-4 border-blue-500;\n}\n\n/* Special elements */\n.bible-verse {\n  @apply italic text-gray-700 border-l-4 border-yellow-400 pl-4 py-2 bg-yellow-50 rounded-r;\n}\n\n.scripture-reference {\n  @apply text-sm font-semibold text-blue-600;\n}\n\n.prayer-count {\n  @apply inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-purple-100 text-purple-800;\n}\n\n.event-type-badge {\n  @apply inline-block px-2 py-1 text-xs font-semibold rounded-full;\n}\n\n.event-type-badge.service {\n  @apply bg-blue-100 text-blue-800;\n}\n\n.event-type-badge.fellowship {\n  @apply bg-green-100 text-green-800;\n}\n\n.event-type-badge.study {\n  @apply bg-purple-100 text-purple-800;\n}\n\n.event-type-badge.feast_day {\n  @apply bg-yellow-100 text-yellow-800;\n}\n\n.event-type-badge.outreach {\n  @apply bg-orange-100 text-orange-800;\n}\n\n/* Accessibility */\n.sr-only {\n  @apply absolute w-px h-px p-0 -m-px overflow-hidden whitespace-nowrap border-0;\n}\n\n/* Focus styles */\n.focus-ring {\n  @apply focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2;\n}\n\n/* Print styles */\n@media print {\n  .no-print {\n    display: none !important;\n  }\n  \n  .print-only {\n    display: block !important;\n  }\n}\n\n/* Dark mode support (optional) */\n@media (prefers-color-scheme: dark) {\n  .dark-mode {\n    @apply bg-gray-900 text-white;\n  }\n  \n  .dark-mode .church-card {\n    @apply bg-gray-800 text-white;\n  }\n  \n  .dark-mode .modal-content {\n    @apply bg-gray-800 text-white;\n  }\n}\n\n/* Smooth scrolling */\nhtml {\n  scroll-behavior: smooth;\n}\n\n/* Custom scrollbar */\n.custom-scrollbar::-webkit-scrollbar {\n  width: 8px;\n}\n\n.custom-scrollbar::-webkit-scrollbar-track {\n  @apply bg-gray-100 rounded;\n}\n\n.custom-scrollbar::-webkit-scrollbar-thumb {\n  @apply bg-gray-400 rounded hover:bg-gray-500;\n}\n\n/* Typing indicator animation */\n.typing-indicator {\n  animation: pulse 1.5s infinite;\n}\n\n/* Church-specific animations */\n.blessing-animation {\n  @apply transform transition-all duration-500 hover:scale-110;\n}\n\n.scripture-highlight {\n  @apply bg-yellow-200 px-1 rounded transition-colors duration-300;\n}\n\n/* Responsive text */\n.responsive-text {\n  @apply text-sm sm:text-base md:text-lg;\n}\n\n/* Button hover effects */\n.btn-glow:hover {\n  box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);\n}\n\n/* Success states */\n.success-checkmark {\n  @apply text-green-500 text-2xl;\n}\n\n/* Error states */\n.error-x {\n  @apply text-red-500 text-2xl;\n}\n\n/* Info states */\n.info-i {\n  @apply text-blue-500 text-2xl;\n}
+/* Turning Point Church Website - Royal Blue & Gold Design */
+/* Large text and high contrast for accessibility */
+
+:root {
+  --royal-blue-primary: #1e3a8a;      /* Deep royal blue */
+  --royal-blue-secondary: #3b82f6;    /* Medium royal blue */
+  --royal-blue-light: #60a5fa;        /* Light royal blue */
+  --royal-blue-dark: #1e40af;         /* Dark royal blue */
+  --church-gold: #fbbf24;             /* Rich gold */
+  --church-gold-light: #fcd34d;       /* Light gold */
+  --church-gold-dark: #d97706;        /* Dark gold */
+  --church-cream: #fef3c7;            /* Cream background */
+  --text-primary: #1f2937;            /* Dark text */
+  --text-secondary: #4b5563;          /* Medium text */
+  --text-light: #ffffff;              /* White text */
+  --background-primary: #f8fafc;      /* Light background */
+  --background-secondary: #e2e8f0;    /* Secondary background */
+}
+
+/* Base typography - Large and readable */
+body {
+  font-size: 18px; /* Larger base font size */
+  line-height: 1.7; /* Better line spacing */
+  color: var(--text-primary);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* Large headings for better readability */
+h1 { font-size: 3.5rem; font-weight: 700; line-height: 1.2; }
+h2 { font-size: 2.75rem; font-weight: 700; line-height: 1.3; }
+h3 { font-size: 2.25rem; font-weight: 600; line-height: 1.3; }
+h4 { font-size: 1.875rem; font-weight: 600; line-height: 1.4; }
+h5 { font-size: 1.5rem; font-weight: 600; line-height: 1.4; }
+h6 { font-size: 1.25rem; font-weight: 600; line-height: 1.4; }
+
+/* Paragraph text - larger for readability */
+p { font-size: 1.125rem; line-height: 1.8; margin-bottom: 1rem; }
+.text-lead { font-size: 1.375rem; line-height: 1.8; }
+.text-large { font-size: 1.25rem; line-height: 1.7; }
+
+/* Custom animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes goldShimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* Page load animation */
+.fade-in-up {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+/* Hero section with royal blue and gold gradient */
+.hero-gradient {
+  background: linear-gradient(135deg, var(--royal-blue-primary) 0%, var(--royal-blue-secondary) 50%, var(--church-gold) 100%);
+  min-height: 500px;
+}
+
+/* Header styling */
+.church-header {
+  background: linear-gradient(90deg, var(--royal-blue-primary), var(--royal-blue-dark));
+  color: var(--text-light);
+  padding: 1.5rem 0;
+  box-shadow: 0 4px 20px rgba(30, 58, 138, 0.3);
+}
+
+/* Navigation links */
+.nav-link {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--text-light);
+  transition: all 0.3s ease;
+}
+
+.nav-link:hover {
+  color: var(--church-gold);
+  transform: translateY(-2px);
+}
+
+/* Button styles with royal blue and gold */
+.btn-primary {
+  background: linear-gradient(45deg, var(--royal-blue-primary), var(--royal-blue-secondary));
+  color: var(--text-light);
+  font-size: 1.125rem;
+  font-weight: 700;
+  padding: 1rem 2rem;
+  border-radius: 12px;
+  border: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(30, 58, 138, 0.3);
+}
+
+.btn-primary:hover {
+  background: linear-gradient(45deg, var(--royal-blue-dark), var(--royal-blue-primary));
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(30, 58, 138, 0.4);
+}
+
+.btn-secondary {
+  background: transparent;
+  border: 3px solid var(--church-gold);
+  color: var(--text-light);
+  font-size: 1.125rem;
+  font-weight: 700;
+  padding: 1rem 2rem;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+  background: var(--church-gold);
+  color: var(--royal-blue-primary);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(251, 191, 36, 0.4);
+}
+
+.btn-gold {
+  background: linear-gradient(45deg, var(--church-gold), var(--church-gold-light));
+  color: var(--royal-blue-primary);
+  font-size: 1.125rem;
+  font-weight: 700;
+  padding: 1rem 2rem;
+  border-radius: 12px;
+  border: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(251, 191, 36, 0.3);
+}
+
+.btn-gold:hover {
+  background: linear-gradient(45deg, var(--church-gold-dark), var(--church-gold));
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(251, 191, 36, 0.4);
+}
+
+.btn-donate {
+  background: linear-gradient(45deg, var(--church-gold), var(--church-gold-light));
+  color: var(--royal-blue-primary);
+  font-size: 1.125rem;
+  font-weight: 700;
+  padding: 0.875rem 1.75rem;
+  border-radius: 10px;
+  border: none;
+  transition: all 0.3s ease;
+}
+
+.btn-donate:hover {
+  background: linear-gradient(45deg, var(--church-gold-dark), var(--church-gold));
+  transform: translateY(-2px);
+}
+
+/* Card styles with royal blue accents */
+.church-card {
+  background: var(--text-light);
+  border: 1px solid var(--background-secondary);
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 8px 30px rgba(30, 58, 138, 0.1);
+  transition: all 0.3s ease;
+}
+
+.church-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(30, 58, 138, 0.2);
+  border-color: var(--church-gold);
+}
+
+.church-card h3 {
+  color: var(--royal-blue-primary);
+  font-size: 1.75rem;
+  margin-bottom: 1rem;
+}
+
+.church-card p {
+  font-size: 1.125rem;
+  color: var(--text-secondary);
+}
+
+/* Sermon and event cards */
+.sermon-card {
+  border-left: 6px solid var(--royal-blue-primary);
+  background: var(--text-light);
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+  border-radius: 0 12px 12px 0;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(30, 58, 138, 0.1);
+}
+
+.sermon-card:hover {
+  background: var(--church-cream);
+  border-left-color: var(--church-gold);
+  transform: translateX(8px);
+  box-shadow: 0 8px 25px rgba(30, 58, 138, 0.15);
+}
+
+.sermon-card h4 {
+  font-size: 1.375rem;
+  color: var(--royal-blue-primary);
+  margin-bottom: 0.5rem;
+}
+
+.sermon-card p {
+  font-size: 1.125rem;
+  color: var(--text-secondary);
+}
+
+.event-card {
+  border-left: 6px solid var(--church-gold);
+  background: var(--text-light);
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+  border-radius: 0 12px 12px 0;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(251, 191, 36, 0.1);
+}
+
+.event-card:hover {
+  background: var(--church-cream);
+  border-left-color: var(--royal-blue-primary);
+  transform: translateX(8px);
+  box-shadow: 0 8px 25px rgba(251, 191, 36, 0.15);
+}
+
+.event-card h4 {
+  font-size: 1.375rem;
+  color: var(--church-gold-dark);
+  margin-bottom: 0.5rem;
+}
+
+.event-card p {
+  font-size: 1.125rem;
+  color: var(--text-secondary);
+}
+
+/* Chat styles with royal blue theme */
+.chat-container {
+  background: var(--text-light);
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(30, 58, 138, 0.15);
+  overflow: hidden;
+  border: 2px solid var(--royal-blue-light);
+}
+
+.chat-messages {
+  height: 400px;
+  overflow-y: auto;
+  padding: 1.5rem;
+  background: linear-gradient(to bottom, var(--background-primary), var(--text-light));
+  scroll-behavior: smooth;
+}
+
+.chat-bubble-user {
+  background: linear-gradient(45deg, var(--royal-blue-primary), var(--royal-blue-secondary));
+  color: var(--text-light);
+  padding: 1rem 1.5rem;
+  border-radius: 20px 20px 5px 20px;
+  font-size: 1.125rem;
+  max-width: 80%;
+  margin-left: auto;
+  margin-bottom: 1rem;
+  box-shadow: 0 4px 15px rgba(30, 58, 138, 0.3);
+}
+
+.chat-bubble-bot {
+  background: linear-gradient(45deg, var(--church-gold-light), var(--church-cream));
+  color: var(--royal-blue-primary);
+  padding: 1rem 1.5rem;
+  border-radius: 20px 20px 20px 5px;
+  font-size: 1.125rem;
+  max-width: 80%;
+  margin-bottom: 1rem;
+  box-shadow: 0 4px 15px rgba(251, 191, 36, 0.2);
+  border: 1px solid var(--church-gold);
+}
+
+.chat-input {
+  padding: 1rem;
+  font-size: 1.125rem;
+  border: 2px solid var(--royal-blue-light);
+  border-radius: 12px;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.chat-input:focus {
+  border-color: var(--church-gold);
+  box-shadow: 0 0 0 3px rgba(251, 191, 36, 0.1);
+}
+
+.chat-send {
+  background: linear-gradient(45deg, var(--royal-blue-primary), var(--royal-blue-secondary));
+  color: var(--text-light);
+  font-size: 1.125rem;
+  font-weight: 700;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.chat-send:hover {
+  background: linear-gradient(45deg, var(--royal-blue-dark), var(--royal-blue-primary));
+  transform: translateY(-2px);
+}
+
+/* Modal styles */
+.modal-overlay {
+  background: rgba(30, 58, 138, 0.8);
+  backdrop-filter: blur(5px);
+}
+
+.modal-content {
+  background: var(--text-light);
+  border-radius: 20px;
+  box-shadow: 0 25px 50px rgba(30, 58, 138, 0.3);
+  border: 2px solid var(--church-gold);
+  max-width: 600px;
+}
+
+.modal-header {
+  background: linear-gradient(90deg, var(--royal-blue-primary), var(--royal-blue-secondary));
+  color: var(--text-light);
+  padding: 1.5rem 2rem;
+  border-radius: 18px 18px 0 0;
+}
+
+.modal-header h2 {
+  font-size: 1.875rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.modal-body {
+  padding: 2rem;
+}
+
+/* Form styles */
+.form-input, .form-textarea, .form-select {
+  font-size: 1.125rem;
+  padding: 1rem;
+  border: 2px solid var(--background-secondary);
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  width: 100%;
+}
+
+.form-input:focus, .form-textarea:focus, .form-select:focus {
+  border-color: var(--royal-blue-primary);
+  box-shadow: 0 0 0 3px rgba(30, 58, 138, 0.1);
+  outline: none;
+}
+
+.form-label {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--royal-blue-primary);
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+/* Donation form styles */
+.donation-type {
+  background: var(--background-primary);
+  border: 3px solid var(--background-secondary);
+  padding: 1.5rem;
+  border-radius: 16px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.donation-type:hover {
+  border-color: var(--royal-blue-light);
+  background: var(--church-cream);
+}
+
+.donation-type.selected {
+  border-color: var(--church-gold);
+  background: var(--church-cream);
+  box-shadow: 0 4px 20px rgba(251, 191, 36, 0.3);
+}
+
+.donation-type .font-semibold {
+  font-size: 1.25rem;
+  color: var(--royal-blue-primary);
+}
+
+.amount-btn {
+  background: var(--background-primary);
+  border: 2px solid var(--royal-blue-light);
+  padding: 0.875rem 1.5rem;
+  border-radius: 10px;
+  font-size: 1.125rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.amount-btn:hover {
+  border-color: var(--church-gold);
+  background: var(--church-cream);
+}
+
+.amount-btn.selected {
+  background: var(--royal-blue-primary);
+  color: var(--text-light);
+  border-color: var(--royal-blue-primary);
+}
+
+/* Footer styles */
+.church-footer {
+  background: linear-gradient(135deg, var(--royal-blue-primary), var(--royal-blue-dark));
+  color: var(--text-light);
+  padding: 3rem 0;
+}
+
+.church-footer h3, .church-footer h4 {
+  color: var(--church-gold);
+  font-size: 1.375rem;
+  margin-bottom: 1rem;
+}
+
+.church-footer p, .church-footer li {
+  font-size: 1.125rem;
+  line-height: 1.7;
+}
+
+.footer-link {
+  color: var(--text-light);
+  transition: all 0.3s ease;
+  font-size: 1.125rem;
+}
+
+.footer-link:hover {
+  color: var(--church-gold);
+  text-decoration: none;
+}
+
+/* Special elements */
+.bible-verse {
+  font-style: italic;
+  color: var(--royal-blue-primary);
+  border-left: 4px solid var(--church-gold);
+  padding: 1rem 1.5rem;
+  background: var(--church-cream);
+  border-radius: 0 12px 12px 0;
+  font-size: 1.25rem;
+  line-height: 1.8;
+}
+
+.scripture-reference {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--church-gold-dark);
+}
+
+.prayer-count {
+  background: var(--church-cream);
+  color: var(--royal-blue-primary);
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 1rem;
+  font-weight: 600;
+  border: 1px solid var(--church-gold);
+}
+
+/* Event type badges with royal blue and gold */
+.event-type-badge {
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.event-type-badge.service {
+  background: var(--royal-blue-light);
+  color: var(--text-light);
+}
+
+.event-type-badge.fellowship {
+  background: var(--church-gold);
+  color: var(--royal-blue-primary);
+}
+
+.event-type-badge.study {
+  background: var(--royal-blue-primary);
+  color: var(--text-light);
+}
+
+.event-type-badge.feast_day {
+  background: var(--church-gold-light);
+  color: var(--royal-blue-primary);
+}
+
+.event-type-badge.outreach {
+  background: var(--church-gold-dark);
+  color: var(--text-light);
+}
+
+/* Responsive design - maintain large text on mobile */
+@media (max-width: 768px) {
+  body { font-size: 16px; }
+  h1 { font-size: 2.5rem; }
+  h2 { font-size: 2rem; }
+  h3 { font-size: 1.75rem; }
+  p { font-size: 1rem; }
+  .text-lead { font-size: 1.125rem; }
+  
+  .btn-primary, .btn-secondary, .btn-gold {
+    font-size: 1rem;
+    padding: 0.875rem 1.5rem;
+  }
+  
+  .chat-bubble-user, .chat-bubble-bot {
+    font-size: 1rem;
+    max-width: 90%;
+  }
+  
+  .modal-content {
+    margin: 1rem;
+    max-width: calc(100% - 2rem);
+  }
+}
+
+/* High contrast mode for accessibility */
+@media (prefers-contrast: high) {
+  :root {
+    --royal-blue-primary: #000080;
+    --church-gold: #FFD700;
+    --text-primary: #000000;
+    --text-light: #FFFFFF;
+  }
+  
+  .btn-primary, .btn-secondary {
+    border: 3px solid;
+  }
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar with royal blue theme */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 12px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: var(--background-primary);
+  border-radius: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, var(--royal-blue-primary), var(--church-gold));
+  border-radius: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to bottom, var(--royal-blue-dark), var(--church-gold-dark));
+}
+
+/* Gold shimmer animation for special elements */
+.gold-shimmer {
+  background: linear-gradient(90deg, var(--church-gold) 25%, var(--church-gold-light) 50%, var(--church-gold) 75%);
+  background-size: 200% 100%;
+  animation: goldShimmer 2s infinite;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
