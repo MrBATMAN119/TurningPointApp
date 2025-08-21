@@ -1,8 +1,8 @@
 // TypeScript types for Turning Point Church website
 
 export interface Bindings {
-  DB: D1Database;
-  AI: any; // Cloudflare AI binding
+  DB?: D1Database; // Optional for initial deployment
+  AI?: any; // Optional Cloudflare AI binding
   STRIPE_SECRET_KEY?: string;
   STRIPE_PUBLISHABLE_KEY?: string;
   OPENAI_API_KEY?: string;

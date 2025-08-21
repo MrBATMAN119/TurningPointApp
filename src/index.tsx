@@ -19,6 +19,25 @@ app.use('/static/*', serveStatic({ root: './public' }))
 // Get all sermons with pagination and filtering
 app.get('/api/sermons', async (c) => {
   const { DB } = c.env
+  
+  // Handle case where database is not available yet
+  if (!DB) {
+    return c.json({
+      sermons: [
+        {
+          id: 1,
+          title: "Walking in Torah Truth",
+          description: "Understanding the importance of keeping the biblical commandments in our daily walk with Messiah",
+          scripture_reference: "Psalm 119:105",
+          preacher: "MrBATMAN",
+          sermon_date: "2025-08-17",
+          is_featured: true
+        }
+      ],
+      pagination: { page: 1, limit: 10, total: 1, totalPages: 1 }
+    })
+  }
+
   const page = Number(c.req.query('page')) || 1
   const limit = Number(c.req.query('limit')) || 10
   const featured = c.req.query('featured')
@@ -110,6 +129,23 @@ app.post('/api/sermons', async (c) => {
 // Get upcoming events
 app.get('/api/events', async (c) => {
   const { DB } = c.env
+  
+  // Handle case where database is not available yet
+  if (!DB) {
+    return c.json({
+      events: [
+        {
+          id: 1,
+          title: "Sabbath Service",
+          description: "Weekly Torah study and fellowship",
+          event_date: "2025-08-23T10:00:00",
+          location: "The Way Fellowship, Scottsburg, IN",
+          event_type: "service"
+        }
+      ]
+    })
+  }
+
   const upcoming = c.req.query('upcoming')
   const type = c.req.query('type')
 
@@ -311,21 +347,37 @@ app.post('/api/chat', async (c) => {
   const { message, sessionId } = await c.req.json()
 
   try {
-    // Get context about recent sermons and events
-    const { results: sermons } = await DB.prepare(`
-      SELECT title, description, scripture_reference, sermon_date, tags 
-      FROM sermons 
-      ORDER BY sermon_date DESC 
-      LIMIT 5
-    `).all()
+    // Default fallback data if database not available
+    let sermons = []
+    let events = []
+    
+    if (DB) {
+      // Get context about recent sermons and events
+      const { results: sermonResults } = await DB.prepare(`
+        SELECT title, description, scripture_reference, sermon_date, tags 
+        FROM sermons 
+        ORDER BY sermon_date DESC 
+        LIMIT 5
+      `).all()
+      sermons = sermonResults
 
-    const { results: events } = await DB.prepare(`
-      SELECT title, description, event_date, event_type, location 
-      FROM events 
-      WHERE event_date >= datetime('now') AND is_published = 1
-      ORDER BY event_date ASC 
-      LIMIT 5
-    `).all()
+      const { results: eventResults } = await DB.prepare(`
+        SELECT title, description, event_date, event_type, location 
+        FROM events 
+        WHERE event_date >= datetime('now') AND is_published = 1
+        ORDER BY event_date ASC 
+        LIMIT 5
+      `).all()
+      events = eventResults
+    } else {
+      // Fallback data
+      sermons = [
+        { title: "Walking in Torah Truth", description: "Biblical commandments", scripture_reference: "Psalm 119:105" }
+      ]
+      events = [
+        { title: "Sabbath Service", description: "Torah study", event_date: "2025-08-23T10:00:00" }
+      ]
+    }
 
     // Church context for the AI
     const churchContext = {

@@ -6,15 +6,15 @@
   "compatibility_flags": [
     "nodejs_compat"
   ],
-  "d1_databases": [
-    {
-      "binding": "DB",
-      "database_name": "turningpoint-church-production",
-      "database_id": "placeholder-will-be-created",
-      "preview_database_id": "placeholder-will-be-created"
-    }
-  ],
-  "ai": {
-    "binding": "AI"
-  }
+  // Temporarily remove D1 and AI bindings for initial deployment
+  // "d1_databases": [
+  //   {
+  //     "binding": "DB",
+  //     "database_name": "turningpoint-church-production",
+  //     "database_id": "placeholder-will-be-created"
+  //   }
+  // ],
+  // "ai": {
+  //   "binding": "AI"
+  // }
 }
