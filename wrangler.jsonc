@@ -10,7 +10,8 @@
     {
       "binding": "DB",
       "database_name": "turningpoint-church-production",
-      "database_id": "placeholder-will-be-set-after-api-key-setup"
+      "database_id": "placeholder-will-be-created",
+      "preview_database_id": "placeholder-will-be-created"
     }
   ],
   "ai": {

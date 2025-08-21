@@ -1,6 +1,9 @@
 {
   "name": "turningpoint-church-website",
   "type": "module",
+  "engines": {
+    "node": ">=18.0.0"
+  },
   "scripts": {
     "dev": "vite",
     "dev:sandbox": "wrangler pages dev dist --ip 0.0.0.0 --port 3000",
@@ -26,8 +29,10 @@
     "hono": "^4.9.2"
   },
   "devDependencies": {
+    "@cloudflare/workers-types": "4.20250705.0",
     "@hono/vite-build": "^1.2.0",
     "@hono/vite-dev-server": "^0.18.2",
+    "typescript": "^5.0.0",
     "vite": "^6.3.5",
     "wrangler": "^4.4.0"
   }
